@@ -1,0 +1,7 @@
+{
+  "name": "ckanext-tolomeo",
+  "version": "0.0.1",
+  "dependencies": {
+  },
+  "appPath": "ckanext/tolomeo/public"
+}
