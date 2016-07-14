@@ -26,12 +26,12 @@ To install ckanext-tolomeo for development:
     cd ckanext-tolomeo
     python setup.py develop
 
-4. Update the list of plugins adding this one. Edit the ``.ini`` file and add:
+4. Update the list of plugins adding this one. Edit the ``.ini`` file and add::
 
     ckan.plugins = ... tolomeo_view
     ckan.views.default_views = ... tolomeo_view
 
-5. In the ``.ini`` file add the configuration needed for Tolomeo; e.g.:
+5. In the ``.ini`` file add the configuration needed for Tolomeo; e.g.::
 
     tolomeo_preset = Cerco
     tolomeo_base_url = http://www.opendatanetwork.it/tolomeo
