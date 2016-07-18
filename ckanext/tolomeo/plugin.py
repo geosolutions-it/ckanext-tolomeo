@@ -39,16 +39,6 @@ def get_proxified_service_url(data_dict):
     return url
 
 
-def get_tolomeo_viewer_config():
-    '''
-        Returns a dict with all configuration options related to the
-        Tolomeo viewer (ie those starting with 'ckanext.tolomeo.')
-    '''
-    namespace = 'ckanext.tolomeo.'
-    return dict([(k.replace(namespace, ''), v) for k, v in config.iteritems()
-                 if k.startswith(namespace)])
-
-
 class GeoViewBase(p.SingletonPlugin):
     '''This base class is for view extensions. '''
     p.implements(p.IResourceView, inherit=True)
@@ -98,25 +88,16 @@ class TolomeoView(GeoViewBase):
             data_dict['resource']['url'] = proxy.get_proxified_resource_url(data_dict)
 
     ## ITemplateHelpers
-
-    def get_tolomeo_base_url(self):
+    def get_tolomeo_config(self):
         '''
-        URL da dove deve essere caricato Tolomeo.
-        Al momento una costante dal file di config.
-        TODO: da proxare se serve
+            Returns a dict with all configuration options related to the
+            Tolomeo viewer (ie those starting with 'ckanext.tolomeo.')
         '''
-
-        return config['tolomeo_base_url'] or 'http://undefined.tolomeo.base.url'
-
-    def get_tolomeo_preset(self):
-        '''
-        Nome del preset di default
-        '''
-
-        return config['tolomeo_preset'] or 'Demo'
+        namespace = 'tolomeo.'
+        return dict([(k.replace(namespace, ''), v) for k, v in config.iteritems()
+                     if k.startswith(namespace)])
 
     def get_helpers(self):
         return {
-            'get_tolomeo_base_url' : self.get_tolomeo_base_url,
-            'get_tolomeo_preset' : self.get_tolomeo_preset,
+            'get_tolomeo_config' : self.get_tolomeo_config,
         }

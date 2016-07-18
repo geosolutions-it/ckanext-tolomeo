@@ -6,7 +6,6 @@ ckan.module('tolomeopreview', function (jQuery, _) {
 
             self.el.empty();
             self.el.append($('<div></div>').attr('id', 'mappa'));
-            //self.map = ckan.commonLeafletMap('map', this.options.map_config, {center: [0, 0], zoom: 3});
 
             tolomeo = new TolomeoExt.ToloPanelInter({
 //                layout: 'fit',
@@ -34,7 +33,6 @@ ckan.module('tolomeopreview', function (jQuery, _) {
             })
 
             new Ext.Panel({
-                title: 'demo tolomeo',
                 width: 888,
                 height: 400,
                 layout: 'fit',

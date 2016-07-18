@@ -1,0 +1,16 @@
+{% ckan_extends %}
+
+{% block resource_actions_inner %}
+    {{ super() }}
+
+    {% if res.format == 'WMS' %}
+        <li>
+            <a class="btn btn-success" target="_blank"
+             href="{{ h.get_tolomeo_config().get('base_url') }}/html/servizi/cerco/cerco.html?paramPreset={{ h.get_tolomeo_config().get('preset') }}&#38;url1={{ res.url}}&#38;lay1={{ res.name}}" >
+              <i class="icon-external-link"></i>Personalizza la mappa
+          </a>
+        </li>
+
+    {% endif %}
+
+{% endblock %}

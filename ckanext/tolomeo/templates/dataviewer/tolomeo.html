@@ -1,40 +1,29 @@
 {% extends "dataviewer/base.html" %}
 
+{% set tolomeo_base = h.get_tolomeo_config().get('base_url') %}
 
 {% block styles %}
 
-<!--
- h.get_tolomeo_base_url() {{ h.get_tolomeo_base_url() }}
-g {{ g }}
-g.tolomeo_preset {{ g.tolomeo_preset}}
-g['tolomeo_preset'] {{ g['tolomeo_preset'] }}
-g.tolomeo_preset or ''  {{ g.tolomeo_preset or ''  }}
-g.tolomeo_base_url {{ g.tolomeo_base_url }}
-c.resource {{c.resource}}
-resource {{resource}}
-
--->
-
    {{ super() }}
 
-  <link rel="stylesheet" type="text/css"  href="{{ h.get_tolomeo_base_url() }}/js/ext/extJS/resources/css/ext-all-red.css" />
-  <link rel="stylesheet" type="text/css"  href="{{ h.get_tolomeo_base_url() }}/css/toloExt-inter.css" />
-  <link rel="stylesheet" type="text/css"  href="{{ h.get_tolomeo_base_url() }}/css/toloExt-default.css" />
+  <link rel="stylesheet" type="text/css"  href="{{ tolomeo_base }}/js/ext/extJS/resources/css/ext-all-red.css" />
+  <link rel="stylesheet" type="text/css"  href="{{ tolomeo_base }}/css/toloExt-inter.css" />
+  <link rel="stylesheet" type="text/css"  href="{{ tolomeo_base }}/css/toloExt-default.css" />
 {% endblock %}
 
 
 {%- block scripts %}
    {{ super() }}
 
-   <script type="text/JavaScript"  src="{{ h.get_tolomeo_base_url() }}/js/tolomeoExt/build/toloExt-all-debug.js"></script>
-   <script type="text/JavaScript"  src="{{ h.get_tolomeo_base_url() }}/ToloExtParamsJSServlet?paramPreset={{ h.get_tolomeo_preset() }}&#38;url1={{ resource.url}}&#38;lay1={{ resource.name}}" ></script>
+   <script type="text/JavaScript"  src="{{ tolomeo_base }}/js/tolomeoExt/build/toloExt-all-debug.js"></script>
+   <script type="text/JavaScript"  src="{{ tolomeo_base }}/ToloExtParamsJSServlet?paramPreset={{ h.get_tolomeo_config().get('preset') }}&#38;url1={{ resource.url}}&#38;lay1={{ resource.name}}" ></script>
 
-   <script type="text/JavaScript"  src="{{ h.get_tolomeo_base_url() }}/js/tolomeoExt/layout/ToloPanelInter.js"></script>
-   <script type="text/JavaScript"  src="{{ h.get_tolomeo_base_url() }}/js/ext/proj4js/proj4js-compressed.js"></script>
+   <script type="text/JavaScript"  src="{{ tolomeo_base }}/js/tolomeoExt/layout/ToloPanelInter.js"></script>
+   <script type="text/JavaScript"  src="{{ tolomeo_base }}/js/ext/proj4js/proj4js-compressed.js"></script>
 {% endblock %}
 
 {% block page %}
-    {% set map_config = h.get_tolomeo_base_url() %}
+    {% set map_config = h.get_tolomeo_config() %}
     <div data-module="tolomeopreview"
          id="data-preview"
          data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}"
