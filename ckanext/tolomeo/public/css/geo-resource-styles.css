@@ -55,3 +55,8 @@
 .label[data-format=arcgis_rest] {
     background-color: #5c3ee0;
 }
+
+.format-label[data-format*=tolomeo] {
+    background: url("../../img/geo.png") no-repeat 0 0;
+    /*background-position: -128px -62px;*/
+}

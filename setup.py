@@ -14,15 +14,16 @@ setup(
     url='http://github.com/geosolutions-it/ckanext-tolomeo',
     license='GPL3',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
-    namespace_packages=['ckanext'],
+    namespace_packages=['ckanext', 'ckanext.tolomeo'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
         # -*- Extra requirements: -*-
     ],
     entry_points='''
-    [ckan.plugins]
-    tolomeo_view=ckanext.tolomeo.plugin:TolomeoView
+       [ckan.plugins]
+       tolomeo_view=ckanext.tolomeo.plugin:TolomeoView
+       tolomeo_preset_view=ckanext.tolomeo.plugin:TolomeoPresetView
     ''',
 
 )

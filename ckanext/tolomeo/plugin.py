@@ -20,7 +20,8 @@ boolean_validator = p.toolkit.get_validator('boolean_validator')
 
 log = getLogger(__name__)
 
-TOLOMEO_FORMATS = ['wms', 'wfs', 'TOLOMEO:preset', 'tolomeo']
+TOLOMEO_FORMATS = ['wms', 'wfs']
+TOLOMEO_PRESET_FORMATS = ['tolomeo:preset', 'tolomeo']
 
 
 def get_proxified_service_url(data_dict):
@@ -101,3 +102,25 @@ class TolomeoView(GeoViewBase):
         return {
             'get_tolomeo_config' : self.get_tolomeo_config,
         }
+
+
+class TolomeoPresetView(GeoViewBase):
+    p.implements(p.IResourceView, inherit=True)
+
+    # IResourceView (CKAN >=2.3)
+    def info(self):
+        return {'name': 'tolomeo_preset_view',
+                'title': 'tolomeo_preset',
+                'icon': 'map-marker',
+                'iframed': False,
+                'default_title': p.toolkit._('WebGIS Tolomeo'),
+                }
+
+    def can_view(self, data_dict):
+        resource = data_dict['resource']
+        format_lower = resource.get('format', '').lower()
+
+        return format_lower in TOLOMEO_PRESET_FORMATS
+
+    def view_template(self, context, data_dict):
+        return 'dataviewer/tolomeo_preset.html'

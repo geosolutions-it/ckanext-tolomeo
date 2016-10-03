@@ -10,7 +10,13 @@
               <i class="icon-external-link"></i>Personalizza la mappa
           </a>
         </li>
-
+    {% elif res.format == 'TOLOMEO' %}
+        <li>
+            <a class="btn btn-success" target="_blank"
+             href="{{ res.url}}" >
+              <i class="icon-external-link"></i>Apri mappa
+          </a>
+        </li>
     {% endif %}
 
 {% endblock %}
