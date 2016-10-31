@@ -10,11 +10,11 @@
               <i class="icon-external-link"></i>Personalizza la mappa
           </a>
         </li>
-    {% elif res.format == 'TOLOMEO' %}
+    {% elif res.format in ('TOLOMEO', 'TOLOMEO:preset', 'WEBGIS') %}
         <li>
             <a class="btn btn-success" target="_blank"
              href="{{ res.url}}" >
-              <i class="icon-external-link"></i>Apri mappa
+              <i class="icon-external-link"></i>Apri WEB GIS
           </a>
         </li>
     {% endif %}
