@@ -56,7 +56,27 @@
     background-color: #5c3ee0;
 }
 
-.format-label[data-format*=tolomeo] {
+.label[data-format=tolomeo] {
+    display: none;
+}
+
+.label[data-format=webgis] {
+    background-color: #9855e0;
+}
+
+.label[data-format=shp] {
+    background-color: #57AB54;
+}
+
+.label[data-format=tif] {
+    background-color: #AA3D3C;
+}
+
+
+.format-label[data-format*=tolomeo],
+.format-label[data-format*=webgis]{
     background: url("../../img/geo.png") no-repeat 0 0;
     /*background-position: -128px -62px;*/
 }
+
+

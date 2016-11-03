@@ -21,7 +21,7 @@ boolean_validator = p.toolkit.get_validator('boolean_validator')
 log = getLogger(__name__)
 
 TOLOMEO_FORMATS = ['wms', 'wfs']
-TOLOMEO_PRESET_FORMATS = ['tolomeo:preset', 'tolomeo']
+TOLOMEO_PRESET_FORMATS = ['tolomeo:preset', 'tolomeo', 'webgis']
 
 
 def get_proxified_service_url(data_dict):
