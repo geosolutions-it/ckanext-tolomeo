@@ -27,7 +27,7 @@ ckan.module('tolomeopreview', function (jQuery, _) {
                     withDragDrop: false,
                     withDelete: false,
                     withShowCoordinate: false,
-                    iconBasePath: '/tolomeo/img/icone/24-default/',
+                    iconBasePath: TolomeoExt.Vars.TOLOMEOServer + '/tolomeo/img/icone/24-default/',
                     defaults: {scale: 'medium'}
                 }
             })
